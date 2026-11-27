@@ -294,13 +294,22 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(min-width:1180px){
 #paper#paper details.tp6>.fb>.blocks{display:block!important;margin-top:6px!important}
 #paper#paper details.tp6>.fb>h3,#paper#paper details.tp6>.fb>.blocks h3{margin-top:6px!important;margin-bottom:4px!important}
-#paper#paper details.tp6>.fb table.rp td,#paper#paper details.tp6>.fb table.rp th{padding-top:clamp(1px,calc((100vh - 820px)/34),6px)!important;padding-bottom:clamp(1px,calc((100vh - 820px)/34),6px)!important}
+/* 재고 탭 표를 화면 높이에 딱 맞춤(2026-11-27 사용자 지시 "아래 공간 남는다, 표 늘려 한 페이지에 딱"): 그래프 높이는 폭에 비례(약 12.6vw)하므로 남는 높이를 글자 크기(10~14px) → 줄 간격 순으로 채움 */
+html #paper#paper details.tp6>.fb table.rp td,html #paper#paper details.tp6>.fb table.rp th{font-size:clamp(9px,calc(12.5px + (100vh - 12.6vw - 533px)/21),14px)!important;line-height:1.2!important;padding-top:clamp(0px,calc((100vh - 12.6vw - 568px)/34),7px)!important;padding-bottom:clamp(0px,calc((100vh - 12.6vw - 568px)/34),7px)!important}
+#paper#paper details.tp6>.fb>h3,#paper#paper details.tp6>.fb>.blocks h3{margin-top:3px!important;margin-bottom:2px!important;font-size:12.5px!important}#paper#paper details.tp6>.fb table.rp{margin-top:0!important}#paper#paper details.tp6>.fb>.invw{margin:0!important}
 }
 /* 2026-11-27: 화면 높이 740px 이하(125% 확대 등)에서도 출품 현황 · 월 누적 · 재고 탭 한 화면 */
 @media(min-width:1180px) and (max-height:740px){
-#paper#paper details.tp3 table td,#paper#paper details.tp3 table th,#paper#paper details.tp6 table td,#paper#paper details.tp6 table th,#paper#paper details.tp8 table td,#paper#paper details.tp8 table th{padding-top:0!important;padding-bottom:0!important;line-height:1.15!important}
+#paper#paper details.tp8 table td,#paper#paper details.tp8 table th{padding-top:0!important;padding-bottom:0!important;line-height:1.15!important}
 #paper#paper details.tp8 table td,#paper#paper details.tp8 table th{font-size:12px!important}
-html #paper#paper details.tp6>.fb table.rp td,html #paper#paper details.tp6>.fb table.rp th{font-size:10.5px!important;line-height:1.02!important}#paper#paper details.tp6>.fb>h3,#paper#paper details.tp6>.fb>.blocks h3{margin-top:1px!important;margin-bottom:1px!important}
+#paper#paper details.tp6>.fb>h3,#paper#paper details.tp6>.fb>.blocks h3{margin-top:1px!important;margin-bottom:1px!important}
+}
+/* 2026-11-27 사용자 지시: 월 누적 표 줄 간격을 화면 높이에 맞춰 넓힘(빽빽함 해소), 재출품 막대는 높이 865px 이하에서 더 키움 */
+@media(min-width:1180px){
+#paper#paper details.tp3 table.rp td,#paper#paper details.tp3 table.rp th{padding-top:clamp(3px,calc((100vh - 530px)/20),16px)!important;padding-bottom:clamp(3px,calc((100vh - 530px)/20),16px)!important}
+}
+@media(min-width:1180px) and (max-height:865px){
+#paper#paper .rsb .sb{height:clamp(18px,calc((100vh - 545px)/7.7),42px)!important}
 }
 /* 낮은 화면(브라우저 110~125% 확대, 보이는 높이 730~830px)에서도 한 화면(2026-11-27 사용자 지시): 공매 표 두 개를 나란히, 재고 표 글자 · 줄 간격 축소 */
 @media(min-width:1180px){
@@ -308,12 +317,10 @@ html #paper#paper details.tp6>.fb table.rp td,html #paper#paper details.tp6>.fb 
 #paper#paper details.tp5>.fb>.blocks>*{min-width:0;margin-top:0!important}#paper#paper details.tp5>.fb>.blocks h3{margin-top:0!important}
 }
 @media(min-width:1180px) and (max-height:840px){
-#paper#paper details.tp6>.fb table.rp td,#paper#paper details.tp6>.fb table.rp th{font-size:12.5px!important;line-height:1.2!important;padding-top:1px!important;padding-bottom:1px!important}
 #paper#paper details.tp6>.fb>h3,#paper#paper details.tp6>.fb>.blocks h3{margin-top:3px!important;margin-bottom:2px!important;font-size:12.5px!important}
 #paper#paper details.tp6>.fb table.rp{margin-top:0!important}#paper#paper details.tp6>.fb>.invw{margin:0!important}
 }
 @media(min-width:1180px) and (max-height:800px){
-#paper#paper details.tp6>.fb table.rp td,#paper#paper details.tp6>.fb table.rp th{font-size:11.5px!important;line-height:1.1!important;padding-top:0!important;padding-bottom:0!important}
 #paper#paper details.tp5>.fb table td,#paper#paper details.tp5>.fb table th{padding-top:clamp(2px,calc((100vh - 640px)/24),9px)!important;padding-bottom:clamp(2px,calc((100vh - 640px)/24),9px)!important}
 }
 /* 읽지 않는 긴 설명 글은 화면에서 뺌(2026-11-26 사용자 지시). 글자는 HTML에 남아 포털 · 점검 엔진이 읽는 값은 그대로 */
